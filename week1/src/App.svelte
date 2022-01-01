@@ -286,12 +286,6 @@ margin: 0;
     align-items: center;
   }
 
-  .profile-picture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   .textarea {
     width: 80%;
     height: 100px;
