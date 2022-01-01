@@ -91,38 +91,38 @@ let count = 0
         <div class="line"></div>
 
         <div class="card card-reply">
-        <div class="flex">
-          <div class="counter">
-            <button class="button" on:click={() => count += 1}>
-              <Fa icon={faPlus} />
-            </button>
+          <div class="flex">
+              <div class="counter">
+                <button class="button" on:click={() => count += 1}>
+                  <Fa icon={faPlus} />
+                </button>
 
-            <span class="counter-number">{count}</span>
+                <span class="counter-number">{count}</span>
 
-            <button class="button" on:click={() => count -= 1}>
-            <Fa icon={faMinus} />
-            </button>
-          </div>
+                <button class="button" on:click={() => count -= 1}>
+                <Fa icon={faMinus} />
+                </button>
+              </div>
 
-          <div class="card-main">
-            <div class="top">
-              <div class="profile">
-                <div class="image-container">
-                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+              <div class="card-main">
+                <div class="top">
+                  <div class="profile">
+                    <div class="image-container">
+                      <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                    </div>
+                    <h4 class="name">amyrobson</h4>
+                    <span class="time">1 month ago</span>
+                  </div>
+                  <div class="reply">
+                    <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
+                  </div>
                 </div>
-                <h4 class="name">amyrobson</h4>
-                <span class="time">1 month ago</span>
-              </div>
-              <div class="reply">
-                <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
-              </div>
-            </div>
 
-            <div class="card-body">
-              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+                <div class="card-body">
+                  Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
       </div>
 
       <div class="card card-reply">
@@ -159,6 +159,20 @@ let count = 0
           </div>
           </div>
       </div>
+      </section>
+
+      <section class="add-comment-section">
+        <div class="card">
+          <div class="comment-box">
+            <div class="flex">
+              <div class="profile-picture-container">
+                <img src="../src/assets/images/avatars/image-juliusomo.png" class="profile-picture" alt="profile" />
+              </div>
+              <textarea class="textarea" placeholder="Add a comment..."></textarea>
+              <button class="submit-button">send</button>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   </div>
@@ -304,6 +318,53 @@ margin: 0;
   .card-reply {
     margin-left: 3rem;
     width: fit-content;
+  }
+
+  .add-comment-section {
+  }
+
+  .comment-box {
+    padding: .5rem;
+  }
+
+  .profile-picture-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .textarea {
+    width: 80%;
+    height: 100px;
+    border: 1px solid lightgrey;
+    margin-left: .5rem;
+    border-radius: 5px;
+    padding: .5rem .7rem;
+    outline: none;
+  }
+
+  .submit-button {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(238, 40%, 52%);
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-transform: capitalize;
+    border-radius: 10px;
+    margin-left: .5rem;
   }
 
 </style>
