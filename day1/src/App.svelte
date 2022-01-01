@@ -12,6 +12,7 @@ let count = 0
 
 <main>
   <div class="container">
+  <div class="card-container">
     <div class="cards">
       <div class="card">
         <div class="flex">
@@ -85,7 +86,82 @@ let count = 0
           </div>
           </div>
       </div>
+
+      <section class="reply-section">
+        <div class="line"></div>
+
+        <div class="card card-reply">
+        <div class="flex">
+          <div class="counter">
+            <button class="button" on:click={() => count += 1}>
+              <Fa icon={faPlus} />
+            </button>
+
+            <span class="counter-number">{count}</span>
+
+            <button class="button" on:click={() => count -= 1}>
+            <Fa icon={faMinus} />
+            </button>
+          </div>
+
+          <div class="card-main">
+            <div class="top">
+              <div class="profile">
+                <div class="image-container">
+                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                </div>
+                <h4 class="name">amyrobson</h4>
+                <span class="time">1 month ago</span>
+              </div>
+              <div class="reply">
+                <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+            </div>
+          </div>
+          </div>
+      </div>
+
+      <div class="card card-reply">
+        <div class="flex">
+          <div class="counter">
+            <button class="button" on:click={() => count += 1}>
+              <Fa icon={faPlus} />
+            </button>
+
+            <span class="counter-number">{count}</span>
+
+            <button class="button" on:click={() => count -= 1}>
+            <Fa icon={faMinus} />
+            </button>
+          </div>
+
+          <div class="card-main">
+            <div class="top">
+              <div class="profile">
+                <div class="image-container">
+                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                </div>
+                <h4 class="name">amyrobson</h4>
+                <span class="time">1 month ago</span>
+              </div>
+              <div class="reply">
+                <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+            </div>
+          </div>
+          </div>
+      </div>
+      </section>
     </div>
+  </div>
   </div>
 </main>
 
@@ -111,12 +187,18 @@ margin: 0;
     padding: 1rem;
   }
 
+  .card-container {
+    width: 800px;
+    margin: 0 auto;
+
+  }
+
   .cards {
     width: 100%;
   }
 
   .card {
-    width: 600px;
+    width: 100%;
     padding: 1rem;
     background-color: hsl(0, 0%, 100%);
     margin: 0 auto 1rem auto;
@@ -203,6 +285,25 @@ margin: 0;
   .card-body {
     color: #c2c4c5;
     margin-top: .6rem;
+  }
+
+  .reply-section {
+        margin-right: 2rem;
+    position: relative;
+    left: 2rem;
+  }
+
+  .line {
+    height: 100%;
+    width: 6px;
+    background-color: hsl(223, 19%, 93%);
+    position: absolute;
+   
+  }
+
+  .card-reply {
+    margin-left: 3rem;
+    width: fit-content;
   }
 
 </style>
