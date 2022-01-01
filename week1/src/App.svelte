@@ -35,7 +35,7 @@ let comments = data.comments
             <div class="top">
               <div class="profile">
                 <div class="image-container">
-                  <img src={comment.user.image.png} alt="image" />
+                  <img src={comment.user.image.png} alt={comment.user.username} />
                 </div>
                 <h4 class="name">{comment.user.username}</h4>
                 <span class="time">{comment.createdAt}</span>
