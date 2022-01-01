@@ -3,10 +3,11 @@
   import data from "../data.json"
 
 import Fa from 'svelte-fa/src/fa.svelte'
-import { faPlus, faMinus, faReply } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faMinus, faReply, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 let count = 0
 
+let comments = data.comments
 
 </script>
 
@@ -14,6 +15,8 @@ let count = 0
   <div class="container">
   <div class="card-container">
     <div class="cards">
+    {#each comments as comment (comment.id)}
+
       <div class="card">
         <div class="flex">
           <div class="counter">
@@ -21,7 +24,7 @@ let count = 0
               <Fa icon={faPlus} />
             </button>
 
-            <span class="counter-number">{count}</span>
+            <span class="counter-number">{comment.score}</span>
 
             <button class="button" on:click={() => count -= 1}>
             <Fa icon={faMinus} />
@@ -32,10 +35,10 @@ let count = 0
             <div class="top">
               <div class="profile">
                 <div class="image-container">
-                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                  <img src={comment.user.image.png} slt="image" />
                 </div>
-                <h4 class="name">amyrobson</h4>
-                <span class="time">1 month ago</span>
+                <h4 class="name">{comment.user.username}</h4>
+                <span class="time">{comment.createdAt}</span>
               </div>
               <div class="reply">
                 <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
@@ -43,87 +46,16 @@ let count = 0
             </div>
 
             <div class="card-body">
-              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+              {comment.content}
             </div>
           </div>
           </div>
       </div>
 
-
-
-
-      <div class="card">
-        <div class="flex">
-          <div class="counter">
-            <button class="button" on:click={() => count += 1}>
-              <Fa icon={faPlus} />
-            </button>
-
-            <span class="counter-number">{count}</span>
-
-            <button class="button" on:click={() => count -= 1}>
-            <Fa icon={faMinus} />
-            </button>
-          </div>
-
-          <div class="card-main">
-            <div class="top">
-              <div class="profile">
-                <div class="image-container">
-                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
-                </div>
-                <h4 class="name">amyrobson</h4>
-                <span class="time">1 month ago</span>
-              </div>
-              <div class="reply">
-                <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
-            </div>
-          </div>
-          </div>
-      </div>
-
+      {#if comment.replies.length !== 0}
+        {#each comment.replies as reply (reply.id)}
       <section class="reply-section">
         <div class="line"></div>
-
-        <div class="card card-reply">
-          <div class="flex">
-              <div class="counter">
-                <button class="button" on:click={() => count += 1}>
-                  <Fa icon={faPlus} />
-                </button>
-
-                <span class="counter-number">{count}</span>
-
-                <button class="button" on:click={() => count -= 1}>
-                <Fa icon={faMinus} />
-                </button>
-              </div>
-
-              <div class="card-main">
-                <div class="top">
-                  <div class="profile">
-                    <div class="image-container">
-                      <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
-                    </div>
-                    <h4 class="name">amyrobson</h4>
-                    <span class="time">1 month ago</span>
-                  </div>
-                  <div class="reply">
-                    <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
-                  </div>
-                </div>
-
-                <div class="card-body">
-                  Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
-                </div>
-              </div>
-            </div>
-      </div>
 
       <div class="card card-reply">
         <div class="flex">
@@ -132,7 +64,7 @@ let count = 0
               <Fa icon={faPlus} />
             </button>
 
-            <span class="counter-number">{count}</span>
+            <span class="counter-number">{reply.score}</span>
 
             <button class="button" on:click={() => count -= 1}>
             <Fa icon={faMinus} />
@@ -143,33 +75,51 @@ let count = 0
             <div class="top">
               <div class="profile">
                 <div class="image-container">
-                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                  <img src={reply.user.image.png} alt={reply.user.username} />
                 </div>
-                <h4 class="name">amyrobson</h4>
-                <span class="time">1 month ago</span>
+                <h4 class="name">{reply.user.username}</h4>
+                {#if reply.user.username === "juliusomo"}
+                <div class="me">you</div>
+                {/if}
+                <span class="time">{reply.createdAt}</span>
               </div>
-              <div class="reply">
+              {#if reply.user.username === "juliusomo"}
+              <div class="edit">
+                <Fa style="color: hsl(358, 79%, 66%); margin-right: .3rem;" icon={faTrash} /> <span style="color: hsl(358, 79%, 66%); margin-right: .5rem; cursor: pointer">Delete</span>
+                <Fa style="color: #615d9d; margin-right: .3rem;" icon={faEdit} /> <span class="reply-text" style="cursor: pointer">Edit</span>
+              </div>
+              {:else}
+                <div class="reply">
                 <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
               </div>
+              {/if}
             </div>
 
             <div class="card-body">
-              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+            {#if reply.replyingTo}
+              <p class="reply-to-username">@{reply.replyingTo}</p> {reply.content}
+            {:else}
+            {reply.content}
+            {/if}
             </div>
           </div>
           </div>
       </div>
       </section>
+      {/each}
+      {/if}
+
+      {/each}
 
       <section class="add-comment-section">
         <div class="card">
           <div class="comment-box">
             <div class="flex">
               <div class="profile-picture-container">
-                <img src="../src/assets/images/avatars/image-juliusomo.png" class="profile-picture" alt="profile" />
+                <img src={data.currentUser.image.png} alt={data.currentUser.username} />
               </div>
               <textarea class="textarea" placeholder="Add a comment..."></textarea>
-              <button class="submit-button">send</button>
+              <button class="submit-button">Send</button>
             </div>
           </div>
         </div>
@@ -283,7 +233,7 @@ margin: 0;
 
   .name {
     color: #969a9f;
-    margin-right: 1rem;
+    margin-right: .5rem;
   }
 
   .reply {
@@ -362,9 +312,33 @@ margin: 0;
     color: white;
     cursor: pointer;
     border: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
     border-radius: 10px;
     margin-left: .5rem;
+    font-weight: 700;
+  }
+
+  .edit {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .me {
+    width: 35px;
+    height: 25px;
+    background-color: hsl(238, 40%, 52%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  .reply-to-username {
+    font-weight: 600;
+    color: hsl(211, 10%, 45%);
+    display: inline;
   }
 
 </style>
