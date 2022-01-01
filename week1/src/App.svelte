@@ -114,7 +114,7 @@ let comments = data.comments
       <section class="add-comment-section">
         <div class="card">
           <div class="comment-box">
-            <div class="flex">
+            <div class="flex-textarea">
               <div class="profile-picture-container">
                 <img src={data.currentUser.image.png} alt={data.currentUser.username} />
               </div>
@@ -219,8 +219,8 @@ margin: 0;
   }
 
   .image-container {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
   }
@@ -339,6 +339,59 @@ margin: 0;
     font-weight: 600;
     color: hsl(211, 10%, 45%);
     display: inline;
+  }
+
+  .flex-textarea {
+    display: flex;
+  }
+
+  @media screen and (max-width: 760px) {
+    .flex-textarea {
+      flex-direction: column;
+    }
+    .card-main {
+      align-items: flex-start;
+    }
+    .card-container {
+      width: 100%;
+    }
+
+    .reply-section {
+      left: 0;
+      width: inherit;
+    }
+
+    .card-reply {
+      margin-left: 10px;
+    }
+
+    .flex {
+      flex-direction: column-reverse;
+    }
+
+    .counter {
+      flex-direction: row;
+      width: 100px;
+    height: 35px;
+    padding: .5rem;
+    margin-top: 1rem;
+    }
+
+    .reply {
+      display: none;
+    }
+
+    .edit {
+      display: none;
+    }
+
+    .profile-picture-container {
+      display: none;
+    }
+
+    .submit-button {
+      margin-top: 1rem;
+    }
   }
 
 </style>
