@@ -47,6 +47,44 @@ let count = 0
           </div>
           </div>
       </div>
+
+
+
+
+      <div class="card">
+        <div class="flex">
+          <div class="counter">
+            <button class="button" on:click={() => count += 1}>
+              <Fa icon={faPlus} />
+            </button>
+
+            <span class="counter-number">{count}</span>
+
+            <button class="button" on:click={() => count -= 1}>
+            <Fa icon={faMinus} />
+            </button>
+          </div>
+
+          <div class="card-main">
+            <div class="top">
+              <div class="profile">
+                <div class="image-container">
+                  <img src="../src/assets/images/avatars/image-amyrobson.png" slt="image" />
+                </div>
+                <h4 class="name">amyrobson</h4>
+                <span class="time">1 month ago</span>
+              </div>
+              <div class="reply">
+                <Fa style="color: #615d9d" icon={faReply} /> <span class="reply-text">Reply</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.
+            </div>
+          </div>
+          </div>
+      </div>
     </div>
   </div>
 </main>
@@ -81,7 +119,7 @@ margin: 0;
     width: 600px;
     padding: 1rem;
     background-color: hsl(0, 0%, 100%);
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
   }
 
   .flex {
@@ -107,10 +145,6 @@ margin: 0;
   .button {
     cursor: pointer;
 
-  }
-
-  .fa {
-    color: red;
   }
 
   .card-main {
