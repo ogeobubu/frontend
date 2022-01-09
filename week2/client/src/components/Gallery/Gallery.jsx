@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./gallery.module.scss";
 import picture from "../../assets/picture.jpg";
 import GalleryItem from "./GalleryItem";
+import axios from "axios";
 
 const data = [
   {
@@ -34,11 +35,19 @@ const data = [
   },
 ];
 
-const Gallery = () => {
+const Gallery = ({ url }) => {
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    const getImages = async () => {
+      const response = await axios.get("http://localhost:5000/api/images");
+      setImages(response.data.message);
+    };
+    getImages();
+  }, [url]);
   return (
     <section className={styles.images}>
-      {data.map(({ id, image }) => (
-        <GalleryItem id={id} image={image} />
+      {images.map(({ _id, image }) => (
+        <GalleryItem key={_id} image={image} />
       ))}
     </section>
   );

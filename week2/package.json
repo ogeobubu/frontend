@@ -1,24 +1,17 @@
 {
-  "name": "react-gallery",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+  "name": "image-gallery",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An image gallery using Cloudinary API to upload and delete image files",
+  "main": "server.js",
+  "author": "Oge Obubu",
+  "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@mui/icons-material": "^5.2.5",
-    "@mui/material": "^5.2.7",
-    "framer-motion": "^2.1.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.7",
-    "sass": "^1.47.0",
-    "sweetalert2": "^11.3.4",
-    "vite": "^2.7.2"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
   }
 }

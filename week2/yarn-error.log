@@ -1,0 +1,34 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add dotenv nodemon express mongoose cors morgan
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.8.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: connect ECONNREFUSED 192.168.10.1:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1146:16)
+
+npm manifest: 
+  {
+    "name": "image-gallery",
+    "version": "1.0.0",
+    "description": "An image gallery using Cloudinary API to upload and delete image files",
+    "main": "server.js",
+    "author": "Oge Obubu",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
