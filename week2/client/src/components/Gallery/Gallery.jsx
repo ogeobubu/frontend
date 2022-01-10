@@ -35,19 +35,20 @@ const data = [
   },
 ];
 
-const Gallery = ({ url }) => {
-  const [images, setImages] = useState([]);
-  useEffect(() => {
-    const getImages = async () => {
-      const response = await axios.get("http://localhost:5000/api/images");
-      setImages(response.data.message);
-    };
-    getImages();
-  }, [url]);
+const Gallery = ({ url, images, setImages }) => {
+  const [filteredArr, setFilteredArr] = useState([]);
+
   return (
     <section className={styles.images}>
       {images.map(({ _id, image }) => (
-        <GalleryItem key={_id} image={image} />
+        <GalleryItem
+          id={_id}
+          key={_id}
+          image={image}
+          setImages={setImages}
+          images={images}
+          setFilteredArr={setFilteredArr}
+        />
       ))}
     </section>
   );
